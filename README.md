@@ -1,6 +1,6 @@
 # Django Audio record
 
-Base project. Save recorded audio from browser to server by Django.
+Base project. Save recorded audio from browser to server by Django. It contains example of online auto upload audio to server by websocket.
 
 
 ## Examples
@@ -17,6 +17,7 @@ python3.8 manage.py runserver
 * example002.png - record and auto upload by websocket
 
 ![](./README.files/example002_1.png)
+
 ![](./README.files/example002_2.png)
 
 ## Notes

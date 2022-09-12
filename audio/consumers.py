@@ -1,18 +1,16 @@
+import datetime
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 
-class ChatConsumer(AsyncWebsocketConsumer):
-    room_name = None
-    room_group_name = None
+class RecordConsumer(AsyncWebsocketConsumer):
+    name = None
 
     async def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'chat_%s' % self.room_name
-
+        self.name = datetime.datetime.utcnow()
         # Join room group
         await self.channel_layer.group_add(
-            self.room_group_name,
+            "same",
             self.channel_name
         )
 
@@ -21,23 +19,24 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def disconnect(self, close_code):
         # Leave room group
         await self.channel_layer.group_discard(
-            self.room_group_name,
+            "same",
             self.channel_name
         )
 
     # Receive message from WebSocket
-    async def receive(self, text_data=None, **_):
-        if not text_data:
+    async def receive(self, bytes_data=None, **_):
+        if not bytes_data:
             return
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+
+        with open(f'./files/{self.name}.mp3', 'ab+') as f:
+            f.write(bytes_data)
 
         # Send message to room group
         await self.channel_layer.group_send(
-            self.room_group_name,
+            "same",
             {
                 'type': 'chat_message',
-                'message': message
+                'message': "data was recieved"
             }
         )
 

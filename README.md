@@ -6,12 +6,18 @@ Base project. Save recorded audio from browser to server by Django.
 ## Examples
 
 ```shell
+python3.8 manage.py migrate
 python3.8 manage.py runserver
 ```
 
-* example001.png
+* example001.png - record and upload buttons
 
 ![](./README.files/example001.png)
+
+* example002.png - record and auto upload by websocket
+
+![](./README.files/example002_1.png)
+![](./README.files/example002_2.png)
 
 ## Notes
 

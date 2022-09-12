@@ -13,6 +13,10 @@ def example001(request):
     return render(request, 'audio/example001.html', {})
 
 
+def example002(request):
+    return render(request, 'audio/example002.html', {})
+
+
 @csrf_exempt
 def save(request):
     if request.method != 'POST':

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Web Recorder</title>
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      flex-gap: 1rem;
+      gap: 1rem;
+    }
+    </style>
+</head>
+<body>
+    <button id="RECORD">Start audio recording</button>
+    <a target="_blank" id="DOWNLOAD" download="AUDIO.mp3">Download from browser recorded audio</a>
+    <button id="SAVE" disabled="true">Upload recorded audio to server</button>
+    <audio controls/>
+    <script src="static/example001.js"></script>
+</body>
+</html>
